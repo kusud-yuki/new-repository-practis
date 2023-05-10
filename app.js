@@ -1,10 +1,16 @@
-
 // canvas要素の取得
 const canvas = document.getElementById('canvas');
-
+const mouse = {
+    x: null,
+    y: null
+  };
 // コンテキストの取得
 const ctx = canvas.getContext('2d');
-
+canvas.addEventListener('mousemove', function(event) {
+    mouse.x = event.x;
+    mouse.y = event.y;
+  });
+  
 // 画面サイズの取得
 const width = window.innerWidth;
 const height = window.innerHeight;
@@ -22,7 +28,12 @@ const wave = {
 };
 
 let increment = wave.frequency;
-
+function drawCircle() {
+    ctx.beginPath();
+    ctx.arc(mouse.x, mouse.y, 20, 0, 2 * Math.PI, false);
+    ctx.fillStyle = '#000000';
+    ctx.fill();
+  }
 // アニメーションの描画
 function animate() {
   // 背景の描画
@@ -37,7 +48,7 @@ function animate() {
   }
   ctx.strokeStyle = '#000000';
   ctx.stroke();
-
+  drawCircle();
   // 波の動きを設定
   increment += wave.frequency;
 
@@ -45,4 +56,4 @@ function animate() {
 }
 
 animate();
-
+ 
