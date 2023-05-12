@@ -31,9 +31,16 @@ let increment = wave.frequency;
 function drawCircle() {
     ctx.beginPath();
     ctx.arc(mouse.x, mouse.y, 20, 0, 2 * Math.PI, false);
-    ctx.fillStyle = '#000000';
+    ctx.fillStyle = circleColor;
     ctx.fill();
   }
+
+  // クリックイベントの追加
+let circleColor = '#ff0000';
+canvas.addEventListener('click', function() {
+  circleColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+});
+
 // アニメーションの描画
 function animate() {
   // 背景の描画
@@ -56,4 +63,4 @@ function animate() {
 }
 
 animate();
- 
+
