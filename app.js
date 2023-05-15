@@ -4,6 +4,19 @@ const mouse = {
     x: null,
     y: null
   };
+
+// 現在の日時を取得
+const currentDate = new Date();
+
+// 日時を表示する要素を取得
+const dateElement = document.getElementById('date');
+
+// 日時を表示するテキストを作成
+const dateText = `現在の日時は${currentDate.toLocaleString()}です。`;
+
+// 日時を表示する要素にテキストを設定
+dateElement.textContent = dateText;
+
 // コンテキストの取得
 const ctx = canvas.getContext('2d');
 canvas.addEventListener('mousemove', function(event) {
@@ -41,6 +54,8 @@ canvas.addEventListener('click', function() {
   circleColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
 });
 
+
+
 // アニメーションの描画
 function animate() {
   // 背景の描画
@@ -62,5 +77,4 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
-animate();
-
+animate();  
