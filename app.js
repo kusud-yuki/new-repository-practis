@@ -47,14 +47,22 @@ function drawCircle() {
     ctx.fillStyle = circleColor;
     ctx.fill();
   }
-
+// テキストの設定
+let textContent = 'Hello, World!';
+function drawText() {
+  ctx.font = '24px sans-serif';
+  ctx.fillStyle = '#000000';
+  ctx.fillText(textContent, mouse.x + 30, mouse.y + 30);
+}
   // クリックイベントの追加
 let circleColor = '#ff0000';
+let clickCount = 0;
 canvas.addEventListener('click', function() {
   circleColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+  clickCount++;
+  textContent = `Clicked: ${clickCount} times`;
 });
-
-//グラデーション円の設定
+// グラデーション円の設定
 function drawGradientCircle() {
   const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 10, mouse.x, mouse.y, 20);
   gradient.addColorStop(0, 'rgba(255, 0, 0, 1)');
@@ -86,7 +94,11 @@ function animate() {
 
   drawGradientCircle();
 
+   drawText();
+
   requestAnimationFrame(animate);
 }
 
-animate();  
+animate();
+ 
+  
