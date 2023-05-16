@@ -54,6 +54,18 @@ function drawText() {
   ctx.fillStyle = '#000000';
   ctx.fillText(textContent, mouse.x + 30, mouse.y + 30);
 }
+// 四角形の設定
+let squareSize = 100;
+function drawSquare() {
+  ctx.fillStyle = '#00FF00';
+  ctx.fillRect(
+    (canvas.width - squareSize) / 2,
+    (canvas.height - squareSize) / 2,
+    squareSize,
+    squareSize
+  );
+}
+
   // クリックイベントの追加
 let circleColor = '#ff0000';
 let clickCount = 0;
@@ -61,6 +73,8 @@ canvas.addEventListener('click', function() {
   circleColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
   clickCount++;
   textContent = `Clicked: ${clickCount} times`;
+  squareSize = Math.floor(Math.random() * 150) + 50;
+
 });
 // グラデーション円の設定
 function drawGradientCircle() {
@@ -94,11 +108,12 @@ function animate() {
 
   drawGradientCircle();
 
-   drawText();
+  drawText();
+
+  drawSquare();
 
   requestAnimationFrame(animate);
 }
 
 animate();
- 
   
