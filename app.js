@@ -54,6 +54,16 @@ canvas.addEventListener('click', function() {
   circleColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
 });
 
+//グラデーション円の設定
+function drawGradientCircle() {
+  const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 10, mouse.x, mouse.y, 20);
+  gradient.addColorStop(0, 'rgba(255, 0, 0, 1)');
+  gradient.addColorStop(1, 'rgba(255, 0, 0, 0)');
+  ctx.beginPath();
+  ctx.arc(mouse.x, mouse.y, 20, 0, 2 * Math.PI, false);
+  ctx.fillStyle = gradient;
+  ctx.fill();
+}
 
 
 // アニメーションの描画
@@ -73,6 +83,8 @@ function animate() {
   drawCircle();
   // 波の動きを設定
   increment += wave.frequency;
+
+  drawGradientCircle();
 
   requestAnimationFrame(animate);
 }
