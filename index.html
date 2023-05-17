@@ -46,6 +46,19 @@
       font-size: 14px;
     }
 
+    #clear-btn {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      z-index: 1; /* ボタンを手前に表示 */
+      cursor: pointer;
+      padding: 5px 10px;
+      background-color: #eeeeee;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
   </style>
 </head>
 <body>
@@ -53,12 +66,17 @@
   <div id="menu">(メニュー)</div>
   <div id="date"></div>
   <button id="amplitude-btn">振幅変更</button>
+  <button id="clear-btn">全て消去</button>
   <h1>日時表示</h1>
   <script src="app.js"></script>
   <script>
     const menu = document.getElementById('menu');
     const date = document.getElementById('date');
     const amplitudeBtn = document.getElementById('amplitude-btn');
+    const clearBtn = document.getElementById('clear-btn');
+
+   
+
     amplitudeBtn.addEventListener('click', function() {
       changeAmplitude();
     });
@@ -72,6 +90,12 @@
       date.textContent = datetime;
       setTimeout(displayDateTime, 1000);
     }
+   
+    
+    clearBtn.addEventListener('click', function() {
+      window.clearCanvas();
+    isAnimating = false;
+    });
 
     displayDateTime();
   </script>
