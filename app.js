@@ -87,7 +87,9 @@ function drawGradientCircle() {
   ctx.fill();
 }
 
-
+function changeAmplitude() {
+  wave.amplitude = Math.floor(Math.random() * 150) + 50;
+}
 // アニメーションの描画
 function animate() {
   // 背景の描画
