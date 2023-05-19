@@ -4,6 +4,19 @@
   <meta charset="UTF-8">
   <title>日時表示</title>
   <style>
+      #tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+     .tab-content {
+      display: none;
+      text-align: center; 
+    }
+    .tab-content.active {
+      display: block;
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -62,6 +75,17 @@
   </style>
 </head>
 <body>
+  <div id="tabs">
+    <button class="tab-button active" data-tab-target="#tab1">Tab 1</button>
+    <button class="tab-button" data-tab-target="#tab2">Tab 2</button>
+  </div>
+  <div id="tab1" class="tab-content active">
+    <p>This is tab 1 content.</p>
+  </div>
+  <div id="tab2" class="tab-content">
+    <p>This is tab 2 content.</p>
+  </div>
+
   <canvas id="canvas"></canvas>
   <div id="menu">(メニュー)</div>
   <div id="date"></div>
@@ -74,8 +98,24 @@
     const date = document.getElementById('date');
     const amplitudeBtn = document.getElementById('amplitude-btn');
     const clearBtn = document.getElementById('clear-btn');
-
+    const tabButtons = document.querySelectorAll(".tab-button");
+    const tabContents = document.querySelectorAll(".tab-content");
    
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = document.querySelector(button.dataset.tabTarget);
+
+        tabContents.forEach((content) => {
+          content.classList.remove("active");
+        });
+        tabButtons.forEach((button) => {
+          button.classList.remove("active");
+        });
+
+        button.classList.add("active");
+        target.classList.add("active");
+      });
+    });
 
     amplitudeBtn.addEventListener('click', function() {
       changeAmplitude();
