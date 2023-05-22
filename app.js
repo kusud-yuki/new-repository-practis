@@ -75,6 +75,22 @@ submitTextButton.addEventListener('click', function() {
   text2.textContent = texts[1] || '';
   text3.textContent = texts[2] || '';
 });
+menuText.addEventListener('keydown', function(e) {
+  if (e.keyCode === 13) { 
+    texts.unshift(menuText.value); 
+    menuText.value = ''; 
+
+    if (texts.length > 3) {
+      texts.pop(); 
+    }
+
+    text1.textContent = texts[0] || '';
+    text2.textContent = texts[1] || '';
+    text3.textContent = texts[2] || '';
+  }
+});
+
+
 
 let increment = wave.frequency;
 function drawCircle() {
@@ -159,5 +175,4 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
-animate();
-    
+animate(); 
