@@ -39,6 +39,21 @@ const wave = {
   amplitude: 100,
   frequency: 0.01
 };
+const changeBgButton = document.getElementById('change-bg');
+
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+changeBgButton.addEventListener('click', function() {
+  document.body.style.backgroundColor = getRandomColor();
+});
+
 const submitTextButton = document.getElementById('submit-text');
 const menuText = document.getElementById('menu-text');
 const text1 = document.getElementById('text1');
@@ -145,4 +160,4 @@ function animate() {
 }
 
 animate();
-  
+    
