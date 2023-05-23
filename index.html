@@ -89,6 +89,20 @@
   <canvas id="canvas"></canvas>
   <div id="menu">(メニュー)</div>
   <div id="date"></div>
+  
+
+<!-- 性別選択 -->
+<div id="gender-selection" style="position: absolute; top: 30px; right: 10px;">
+  <label>
+    <input type="radio" name="gender" value="male">
+    Male
+  </label>
+  <label>
+    <input type="radio" name="gender" value="female">
+    Female
+  </label>
+</div>
+  
   <button id="amplitude-btn">振幅変更</button>
   <button id="clear-btn">全て消去</button>
   <label for="menu-text" id="menu-label" style="position: absolute; top: 60px; left: 10px;">Menu Text:</label>
@@ -100,6 +114,8 @@
 <div id="text3" class="saved-text" style="position: absolute; top: 150px; left: 10px;"></div>
 <button id="change-bg" style="position: absolute; bottom: 10px; right: 100px;">背景色変更</button>
   <h1>日時表示</h1>
+  
+
   <script src="app.js"></script>
   <script>
     const menu = document.getElementById('menu');
@@ -148,4 +164,4 @@
     displayDateTime();
   </script>
 </body>
-</html> 
+</html>
