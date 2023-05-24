@@ -71,6 +71,13 @@
       border-radius: 5px;
       font-size: 14px;
     }
+    
+    #fade-button {
+    transition: opacity 1s;
+  }
+  #fade-button:hover {
+    opacity: 0;
+  }
 
   </style>
 </head>
@@ -115,7 +122,10 @@
     <option value="shikoku">Shikoku</option>
     <option value="kyushu">Kyushu</option>
   </select>
-</div>  
+</div> 
+<div id="fade-button-container" style="position: absolute; top: 250px; right: 10px;">  
+  <button id="fade-button">This text will disappear!</button>
+</div> 
   <button id="amplitude-btn">振幅変更</button>
   <button id="clear-btn">全て消去</button>
   <label for="menu-text" id="menu-label" style="position: absolute; top: 60px; left: 10px;">Menu Text:</label>
@@ -137,8 +147,15 @@
     const clearBtn = document.getElementById('clear-btn');
     const tabButtons = document.querySelectorAll(".tab-button");
     const tabContents = document.querySelectorAll(".tab-content");
-   
-    tabButtons.forEach((button) => {
+    const fadeButton = document.getElementById('fade-button');
+  
+    fadeButton.addEventListener('mouseover', function() {
+    fadeButton.classList.add('fade');
+  });
+  fadeButton.addEventListener('mouseout', function() {
+    fadeButton.classList.remove('fade');
+  });
+　 tabButtons.forEach((button) => {
       button.addEventListener("click", () => {
         const target = document.querySelector(button.dataset.tabTarget);
 
@@ -178,3 +195,4 @@
   </script>
 </body>
 </html>
+
