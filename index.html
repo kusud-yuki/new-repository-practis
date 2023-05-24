@@ -126,6 +126,9 @@
 <div id="fade-button-container" style="position: absolute; top: 250px; right: 10px;">  
   <button id="fade-button">This text will disappear!</button>
 </div> 
+<div id="contact-button-container" style="position: absolute; top: 350px; right: 10px;">
+  <button id="contact-button">お問い合わせ</button>
+</div>
   <button id="amplitude-btn">振幅変更</button>
   <button id="clear-btn">全て消去</button>
   <label for="menu-text" id="menu-label" style="position: absolute; top: 60px; left: 10px;">Menu Text:</label>
@@ -148,6 +151,11 @@
     const tabButtons = document.querySelectorAll(".tab-button");
     const tabContents = document.querySelectorAll(".tab-content");
     const fadeButton = document.getElementById('fade-button');
+    const contactButton = document.getElementById('contact-button');
+    
+  contactButton.addEventListener('click', function() {
+    alert('お問い合わせ内容を入力してください');
+  });
   
     fadeButton.addEventListener('mouseover', function() {
     fadeButton.classList.add('fade');
