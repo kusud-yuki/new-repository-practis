@@ -60,11 +60,17 @@ const text1 = document.getElementById('text1');
 const text2 = document.getElementById('text2');
 const text3 = document.getElementById('text3');
 const backButton = document.getElementById('back-button');
+const amplitudeSlider = document.getElementById('amplitude-slider');
+
 
 let texts = [];
 
 backButton.addEventListener('click', function() {
   window.history.back();
+});
+
+amplitudeSlider.addEventListener('input', function() {
+  wave.amplitude = this.value;
 });
 
 submitTextButton.addEventListener('click', function() {
@@ -181,3 +187,4 @@ function animate() {
 }
 
 animate();
+  
