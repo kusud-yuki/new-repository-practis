@@ -59,8 +59,13 @@ const menuText = document.getElementById('menu-text');
 const text1 = document.getElementById('text1');
 const text2 = document.getElementById('text2');
 const text3 = document.getElementById('text3');
+const backButton = document.getElementById('back-button');
 
 let texts = [];
+
+backButton.addEventListener('click', function() {
+  window.history.back();
+});
 
 submitTextButton.addEventListener('click', function() {
   texts.unshift(menuText.value); 
@@ -175,4 +180,4 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
-animate(); 
+animate();
