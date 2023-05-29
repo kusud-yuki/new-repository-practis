@@ -61,7 +61,27 @@ const text2 = document.getElementById('text2');
 const text3 = document.getElementById('text3');
 const backButton = document.getElementById('back-button');
 const amplitudeSlider = document.getElementById('amplitude-slider');
+// 音楽プレーヤーの各要素を取得
+const audio = document.getElementById('audio');
+const playButton = document.getElementById('play-button');
+const pauseButton = document.getElementById('pause-button');
+const stopButton = document.getElementById('stop-button');
 
+// 再生ボタンがクリックされたときの処理
+playButton.addEventListener('click', function() {
+  audio.play();
+});
+
+// 一時停止ボタンがクリックされたときの処理
+pauseButton.addEventListener('click', function() {
+  audio.pause();
+});
+
+// 停止ボタンがクリックされたときの処理
+stopButton.addEventListener('click', function() {
+  audio.pause();
+  audio.currentTime = 0;
+});
 
 let texts = [];
 

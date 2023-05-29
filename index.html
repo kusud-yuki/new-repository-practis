@@ -157,6 +157,15 @@
   <input type="range" min="50" max="150" value="100" id="amplitude-slider" />
   <label for="amplitude-slider">振幅調整</label>
 </div>
+<div id="music-player" style="position: absolute; top: 200px; left: 10px;">
+  <audio id="audio" controls>
+    <source src="https://amachamusic.chagasi.com/mp3/natsuyasuminotanken.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <button id="play-button">Play</button>
+  <button id="pause-button">Pause</button>
+  <button id="stop-button">Stop</button>
+</div>
 <button id="change-bg" style="position: absolute; bottom: 10px; right: 100px;">背景色変更</button>
   <h1>日時表示</h1>
   
