@@ -101,7 +101,18 @@ menuText.addEventListener('keydown', function(e) {
   }
 });
 
+function changeBackgroundColor() {
+  // ランダムなRGB値を生成します
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
 
+  // bodyの背景色を設定します
+  document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+}
+
+// マウスが動いたときに背景色を変更します
+document.body.addEventListener('mousemove', changeBackgroundColor);
 
 let increment = wave.frequency;
 function drawCircle() {
@@ -187,4 +198,3 @@ function animate() {
 }
 
 animate();
-  
