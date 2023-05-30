@@ -216,5 +216,13 @@ function animate() {
 
   requestAnimationFrame(animate);
 }
+window.addEventListener('scroll', function() {
+  const scrollImage = document.getElementById('scroll-image');
+  const rect = scrollImage.getBoundingClientRect();
+
+  if (rect.top <= window.innerHeight) {
+      scrollImage.style.display = 'block';
+  }
+});
 
 animate();
