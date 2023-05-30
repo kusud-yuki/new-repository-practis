@@ -66,6 +66,20 @@ const audio = document.getElementById('audio');
 const playButton = document.getElementById('play-button');
 const pauseButton = document.getElementById('pause-button');
 const stopButton = document.getElementById('stop-button');
+const scrollImage = document.getElementById('scroll-image');
+
+if (scrollImage !== null) {
+    // 画像にマウスオーバーしたときのイベントリスナーを追加
+    scrollImage.addEventListener('mouseover', function() {
+        scrollImage.classList.add('zoom');
+    });
+
+    // 画像からマウスが離れたときのイベントリスナーを追加
+    scrollImage.addEventListener('mouseout', function() {
+        scrollImage.classList.remove('zoom');
+    });
+}
+
 
 // 再生ボタンがクリックされたときの処理
 playButton.addEventListener('click', function() {
@@ -226,3 +240,4 @@ window.addEventListener('scroll', function() {
 });
 
 animate();
+  
