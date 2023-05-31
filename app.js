@@ -67,6 +67,13 @@ const playButton = document.getElementById('play-button');
 const pauseButton = document.getElementById('pause-button');
 const stopButton = document.getElementById('stop-button');
 const scrollImage = document.getElementById('scroll-image');
+const newImageSource = "image/ELFA85_himawarihatake_TP_V4.jpg";
+
+if (scrollImage !== null) {
+  scrollImage.addEventListener('click', function() {
+    scrollImage.src = newImageSource;
+  });
+}
 
 if (scrollImage !== null) {
     // 画像にマウスオーバーしたときのイベントリスナーを追加
@@ -238,6 +245,15 @@ window.addEventListener('scroll', function() {
       scrollImage.style.display = 'block';
   }
 });
+window.addEventListener('scroll', function() {
+  const scrollImage = document.getElementById('scroll-image');
+  const scrollImageCaption = document.getElementById('scroll-image-caption');
+  const rect = scrollImage.getBoundingClientRect();
+
+  if (rect.top <= window.innerHeight) {
+    scrollImage.style.display = 'block';
+    scrollImageCaption.textContent = "This is the caption for the image."; 
+  }
+});
 
 animate();
-  
