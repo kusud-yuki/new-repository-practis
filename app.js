@@ -68,13 +68,23 @@ const pauseButton = document.getElementById('pause-button');
 const stopButton = document.getElementById('stop-button');
 const scrollImage = document.getElementById('scroll-image');
 const newImageSource = "image/ELFA85_himawarihatake_TP_V4.jpg";
+const oldCaption = "This is the caption for the image."; 
+const newCaption = "This is a new image."; 
 
 if (scrollImage !== null) {
   scrollImage.addEventListener('click', function() {
+    // 画像の変更
     scrollImage.src = newImageSource;
+    
+    // テキスト（キャプション）の取得
+    const scrollImageCaption = document.getElementById('scroll-image-caption');
+
+    // テキスト（キャプション）の変更
+    if (scrollImageCaption !== null) {
+      scrollImageCaption.textContent = newCaption;
+    }
   });
 }
-
 if (scrollImage !== null) {
     // 画像にマウスオーバーしたときのイベントリスナーを追加
     scrollImage.addEventListener('mouseover', function() {
@@ -245,6 +255,8 @@ window.addEventListener('scroll', function() {
       scrollImage.style.display = 'block';
   }
 });
+
+
 window.addEventListener('scroll', function() {
   const scrollImage = document.getElementById('scroll-image');
   const scrollImageCaption = document.getElementById('scroll-image-caption');
@@ -252,8 +264,11 @@ window.addEventListener('scroll', function() {
 
   if (rect.top <= window.innerHeight) {
     scrollImage.style.display = 'block';
-    scrollImageCaption.textContent = "This is the caption for the image."; 
+    if (scrollImageCaption !== null) {
+      scrollImageCaption.textContent = oldCaption;
+    }
   }
 });
 
 animate();
+  
