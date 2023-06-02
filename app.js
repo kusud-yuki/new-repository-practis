@@ -70,6 +70,20 @@ const scrollImage = document.getElementById('scroll-image');
 const newImageSource = "image/ELFA85_himawarihatake_TP_V4.jpg";
 const oldCaption = "This is the caption for the image."; 
 const newCaption = "This is a new image."; 
+const correctUsername = "admin";
+const correctPassword = "password";
+
+function login() {
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  if (username === correctUsername && password === correctPassword) {
+    document.getElementById('login-form').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+  } else {
+    document.getElementById('error-message').textContent = "Incorrect username or password.";
+  }
+}
 
 if (scrollImage !== null) {
   scrollImage.addEventListener('click', function() {
@@ -271,4 +285,3 @@ window.addEventListener('scroll', function() {
 });
 
 animate();
-  

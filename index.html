@@ -111,6 +111,16 @@
   </style>
 </head>
 <body>
+  <div id="login-form" style="display: block;">
+    <h1>Login</h1>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p id="error-message" style="color: red;"></p>
+  </div>
+
+  <div id="main-content" style="display: none;">
+    
   <div id="tabs">
     <button class="tab-button active" data-tab-target="#tab1">Tab 1</button>
     <button class="tab-button" data-tab-target="#tab2">Tab 2</button>
@@ -188,7 +198,7 @@
 
 
 <button id="change-bg" style="position: absolute; bottom: 10px; right: 100px;">背景色変更</button>
-  
+</div>
   
   <script src="script.js"></script>
   <script src="app.js"></script>
