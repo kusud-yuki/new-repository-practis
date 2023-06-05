@@ -76,6 +76,7 @@ const scrollImageDiv = document.getElementById('scroll-image');
 
 let images = scrollImageDiv.getElementsByTagName('img');
 let currentIndex = 0;
+let captions = ["Caption for image 1", "Caption for image 2", "Caption for image 3"];
 
 function login() {
   const username = document.getElementById('username').value;
@@ -102,6 +103,7 @@ function changeImage(change) {
   }
 
   images[currentIndex].style.display = 'block';
+  document.getElementById('image-caption').textContent = captions[currentIndex];
 }
 
 if (scrollImageDiv !== null) {
@@ -278,8 +280,11 @@ window.addEventListener('scroll', function() {
 window.addEventListener('scroll', function() {
   const rect = scrollImageDiv.getBoundingClientRect();
 
-  if (rect.top <= window.innerHeight) {
+  
+  if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
     scrollImageDiv.style.display = 'block';
+  } else {
+    scrollImageDiv.style.display = 'none';
   }
 });
 
