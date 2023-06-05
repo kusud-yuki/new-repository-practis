@@ -72,6 +72,10 @@ const oldCaption = "This is the caption for the image.";
 const newCaption = "This is a new image."; 
 const correctUsername = "admin";
 const correctPassword = "password";
+const scrollImageDiv = document.getElementById('scroll-image');
+
+let images = scrollImageDiv.getElementsByTagName('img');
+let currentIndex = 0;
 
 function login() {
   const username = document.getElementById('username').value;
@@ -85,32 +89,32 @@ function login() {
   }
 }
 
-if (scrollImage !== null) {
-  scrollImage.addEventListener('click', function() {
-    // 画像の変更
-    scrollImage.src = newImageSource;
-    
-    // テキスト（キャプション）の取得
-    const scrollImageCaption = document.getElementById('scroll-image-caption');
 
-    // テキスト（キャプション）の変更
-    if (scrollImageCaption !== null) {
-      scrollImageCaption.textContent = newCaption;
-    }
+
+function changeImage(change) {
+  images[currentIndex].style.display = 'none';
+  currentIndex += change;
+
+  if (currentIndex < 0) {
+    currentIndex = images.length - 1;
+  } else if (currentIndex >= images.length) {
+    currentIndex = 0;
+  }
+
+  images[currentIndex].style.display = 'block';
+}
+
+if (scrollImageDiv !== null) {
+  // 画像にマウスオーバーしたときのイベントリスナーを追加
+  scrollImageDiv.addEventListener('mouseover', function() {
+    scrollImageDiv.classList.add('zoom');
+  });
+
+  // 画像からマウスが離れたときのイベントリスナーを追加
+  scrollImageDiv.addEventListener('mouseout', function() {
+    scrollImageDiv.classList.remove('zoom');
   });
 }
-if (scrollImage !== null) {
-    // 画像にマウスオーバーしたときのイベントリスナーを追加
-    scrollImage.addEventListener('mouseover', function() {
-        scrollImage.classList.add('zoom');
-    });
-
-    // 画像からマウスが離れたときのイベントリスナーを追加
-    scrollImage.addEventListener('mouseout', function() {
-        scrollImage.classList.remove('zoom');
-    });
-}
-
 
 // 再生ボタンがクリックされたときの処理
 playButton.addEventListener('click', function() {
@@ -272,15 +276,10 @@ window.addEventListener('scroll', function() {
 
 
 window.addEventListener('scroll', function() {
-  const scrollImage = document.getElementById('scroll-image');
-  const scrollImageCaption = document.getElementById('scroll-image-caption');
-  const rect = scrollImage.getBoundingClientRect();
+  const rect = scrollImageDiv.getBoundingClientRect();
 
   if (rect.top <= window.innerHeight) {
-    scrollImage.style.display = 'block';
-    if (scrollImageCaption !== null) {
-      scrollImageCaption.textContent = oldCaption;
-    }
+    scrollImageDiv.style.display = 'block';
   }
 });
 
