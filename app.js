@@ -73,10 +73,31 @@ const newCaption = "This is a new image.";
 const correctUsername = "admin";
 const correctPassword = "password";
 const scrollImageDiv = document.getElementById('scroll-image');
+const tabButtons = document.querySelectorAll(".tab-button");
+const tabContents = document.querySelectorAll(".tab-content");
+
+
 
 let images = scrollImageDiv.getElementsByTagName('img');
 let currentIndex = 0;
 let captions = ["Caption for image 1", "Caption for image 2", "Caption for image 3"];
+
+tabButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const target = document.querySelector(button.dataset.tabTarget);
+
+    tabContents.forEach((content) => {
+      content.classList.remove("active");
+    });
+    tabButtons.forEach((button) => {
+      button.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    target.classList.add("active");
+  });
+});
+
 
 function login() {
   const username = document.getElementById('username').value;
@@ -268,16 +289,6 @@ function animate() {
   requestAnimationFrame(animate);
 }
 window.addEventListener('scroll', function() {
-  const scrollImage = document.getElementById('scroll-image');
-  const rect = scrollImage.getBoundingClientRect();
-
-  if (rect.top <= window.innerHeight) {
-      scrollImage.style.display = 'block';
-  }
-});
-
-
-window.addEventListener('scroll', function() {
   const rect = scrollImageDiv.getBoundingClientRect();
 
   
@@ -287,5 +298,22 @@ window.addEventListener('scroll', function() {
     scrollImageDiv.style.display = 'none';
   }
 });
+
+
+
+
+window.addEventListener('scroll', function() {
+  const scrollImage = document.getElementById('scroll-image');
+  const scrollImageCaption = document.getElementById('scroll-image-caption');
+  const rect = scrollImage.getBoundingClientRect();
+
+  if (rect.top <= window.innerHeight) {
+    scrollImage.style.display = 'block';
+    if (scrollImageCaption !== null) {
+      scrollImageCaption.textContent = oldCaption;
+    }
+  }
+});
+
 
 animate();

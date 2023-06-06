@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>日時表示</title>
   <style>
+    
      
         #scroll-image {
             display: none;
@@ -120,8 +121,17 @@
     <button onclick="login()">Login</button>
     <p id="error-message" style="color: red;"></p>
   </div>
-
   <div id="main-content" style="display: none;"> -->
+
+<div id="home" class="tab-content active">
+  <div id="tabs">
+    
+    <button class="tab-button active" data-tab-target="#home">ホーム</button>
+    <button class="tab-button" data-tab-target="#profile">プロフィール</button>
+  </div>
+  
+
+ 
     
   <div id="tabs">
     <button class="tab-button active" data-tab-target="#tab1">Tab 1</button>
@@ -209,17 +219,22 @@
 
 <button id="change-bg" style="position: absolute; bottom: 10px; right: 100px;">背景色変更</button>
 </div>
-
+</div>
+<div id="profile" class="tab-content">
+  <div id="tabs">
+    
+    <button class="tab-button active" data-tab-target="#home">ホーム</button>
+    <button class="tab-button" data-tab-target="#profile">プロフィール</button>
+  </div>
+</div>
   
-  <script src="script.js"></script>
+  
   <script src="app.js"></script>
   <script>
     const menu = document.getElementById('menu');
     const date = document.getElementById('date');
     const amplitudeBtn = document.getElementById('amplitude-btn');
     const clearBtn = document.getElementById('clear-btn');
-    const tabButtons = document.querySelectorAll(".tab-button");
-    const tabContents = document.querySelectorAll(".tab-content");
     const fadeButton = document.getElementById('fade-button');
     const contactButton = document.getElementById('contact-button');
     
