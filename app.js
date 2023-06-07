@@ -315,5 +315,12 @@ window.addEventListener('scroll', function() {
   }
 });
 
+jQuery(document).ready(function($) {
+  $('#alert-button').click(function() {
+    alert('Button has been clicked!');
+  });
+});
+
+
 
 animate();
