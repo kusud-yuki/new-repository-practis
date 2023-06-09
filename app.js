@@ -321,6 +321,21 @@ jQuery(document).ready(function($) {
   });
 });
 
+jQuery(document).ready(function($) {
+  $('#button').click(function() {
+    $('#output').text('Button was clicked!');
+});
+
+// テーブルの行がホバーされたときの動作を設定
+$('tr').hover(
+    function() { // マウスが乗ったときの動作
+        $(this).addClass('highlight');
+    }, 
+    function() { // マウスが離れたときの動作
+        $(this).removeClass('highlight');
+    }
+);
+});
 
 
 animate();
