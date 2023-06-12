@@ -4,6 +4,44 @@
   <meta charset="UTF-8">
   <title>日時表示</title>
   <style>
+
+/* モーダルウィンドウの背景 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+/* モーダルウィンドウの内容 */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* クローズボタン */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
     .highlight {
   background-color: yellow;
 }
@@ -243,6 +281,17 @@
         <td>Row 2, Column 2</td>
       </tr>
     </table>
+
+    <button id="openModal">Open Modal</button>
+
+<!-- モーダルウィンドウの部分 -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+</div>
+
 
   </div>
 </div>

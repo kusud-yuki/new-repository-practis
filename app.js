@@ -337,5 +337,36 @@ $('tr').hover(
 );
 });
 
+// 画像にマウスオーバーしたときのイベントリスナーを追加
+scrollImageDiv.addEventListener('mouseover', function() {
+  scrollImageDiv.classList.add('zoom');
+});
+
+// 画像からマウスが離れたときのイベントリスナーを追加
+scrollImageDiv.addEventListener('mouseout', function() {
+  scrollImageDiv.classList.remove('zoom');
+});
+
+// jQueryの部分
+jQuery(document).ready(function($) {
+  // モーダルウィンドウの初期状態を非表示に
+  $("#myModal").hide();
+
+  // 'Open Modal' ボタンがクリックされたときの動作
+  $("#openModal").click(function() {
+    $("#myModal").show();
+  });
+
+  // 'Close' ボタンまたはモーダルウィンドウの外側がクリックされたときの動作
+  $(".close, .modal").click(function() {
+    $("#myModal").hide();
+  });
+
+  // モーダルウィンドウ内部がクリックされたときの動作（バブリングの停止）
+  $(".modal-content").click(function(event) {
+    event.stopPropagation();
+  });
+});
+
 
 animate();
