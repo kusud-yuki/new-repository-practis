@@ -336,7 +336,7 @@ $('tr').hover(
         $(this).removeClass('highlight');
     }
 );
-$('th').click(function() { 
+ $('th').click(function() {
   var table = $(this).parents('table').eq(0);
   var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()));
   this.asc = !this.asc;
@@ -359,6 +359,26 @@ function comparer(index) {
 function getCellValue(row, index) { 
   return $(row).children('td').eq(index).text(); 
 } 
+
+// Filtering
+$('#filterInput').on('keyup', function() {
+  var value = $(this).val().toLowerCase();
+  $("#myTable tr").filter(function() {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+  });
+});
+
+// Adding a row
+$('#addRow').click(function() {
+  var name = $('#nameInput').val();
+  var country = $('#countryInput').val();
+  if (name && country) {
+    var row = $('<tr><td>' + name + '</td><td>' + country + '</td></tr>');
+    $('#myTable').append(row);
+    $('#nameInput').val('');
+    $('#countryInput').val('');
+  }
+});
 });
 
 // 画像にマウスオーバーしたときのイベントリスナーを追加
