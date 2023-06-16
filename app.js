@@ -413,4 +413,38 @@ jQuery(document).ready(function($) {
 });
 
 
+jQuery(document).ready(function($) {
+  var images = $('#scroll-image img');
+  var index = 0;
+
+  function showImage() {
+      images.hide();
+      images.eq(index).show();
+  }
+
+  $('#nextBtn').click(function() {
+      index++;
+      if (index >= images.length) {
+          index = 0;
+      }
+      showImage();
+  });
+
+  $('#prevBtn').click(function() {
+      index--;
+      if (index < 0) {
+          index = images.length - 1;
+      }
+      showImage();
+  });
+
+  showImage();
+
+  setInterval(function() {
+    $('#nextBtn').click();
+}, 3000); // 3000ミリ秒（3秒）ごとに自動で画像を切り替えます
+
+});
+
+
 animate();

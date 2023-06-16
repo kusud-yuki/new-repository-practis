@@ -47,14 +47,39 @@
 }
     
      
+#scroll-image-caption {
+            text-align: center;
+        }
         #scroll-image {
-            display: none;
-            position: absolute;
-            top: 150vh;  /* スクロールする位置を設定します */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
+            position: absolute; 
+            top: 150vh; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 200px; 
             height: 200px;
+        }
+        #scroll-image img {
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+        }
+        #image-caption {
+            position: absolute; 
+            bottom: 0; 
+            background-color: rgba(255, 255, 255, 0.5); 
+            width: 100%; 
+            text-align: center;
+        }
+        #prevBtn, #nextBtn {
+            position: absolute; 
+            top: 50%; 
+            transform: translateY(-50%);
+        }
+        #prevBtn {
+            left: 0; 
+        }
+        #nextBtn {
+            right: 0; 
         }
       #back-button {
   cursor: pointer;
@@ -247,16 +272,15 @@
   <button id="pause-button">Pause</button>
   <button id="stop-button">Stop</button>
 </div>
-<div id="scroll-image-caption" style="text-align: center;"></div>
-<div id="scroll-image" style="position: absolute; top: 150vh; left: 50%; transform: translateX(-50%); width: 200px; height: 200px;">
-  <img src="image/image1.jpg" style="position: absolute; width: 100%; height: 100%;">
-  <img src="image/ELFA85_himawarihatake_TP_V4.jpg" style="position: absolute; width: 100%; height: 100%; display: none;">
-  <p id="image-caption" style="position: absolute; bottom: 0; background-color: rgba(255, 255, 255, 0.5); width: 100%; text-align: center;">Image Caption</p>
+ <div id="scroll-image-caption"></div>
+<div id="scroll-image">
+    <img src="image/image1.jpg" style="display: none;">
+    <img src="image/ELFA85_himawarihatake_TP_V4.jpg" style="display: none;">
+    <p id="image-caption">Image Caption</p>
 
-  <button id="prevBtn" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%);" onclick="changeImage(-1)">Prev</button>
-  <button id="nextBtn" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%);" onclick="changeImage(1)">Next</button>
+    <button id="prevBtn">Prev</button>
+    <button id="nextBtn">Next</button>
 </div>
-
 
 
 <button id="change-bg" style="position: absolute; bottom: 10px; right: 100px;">背景色変更</button>
