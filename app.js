@@ -446,5 +446,19 @@ jQuery(document).ready(function($) {
 
 });
 
+jQuery(document).ready(function($) {
+  $(".accordion-header").click(function() {
+      // Close all sections
+      $(".accordion-content").slideUp();
+      $(".accordion-header").removeClass("active");
+
+      // Open the one you've clicked
+      if (!$(this).next(".accordion-content").is(":visible")) {
+          $(this).next(".accordion-content").slideDown();
+          $(this).addClass("active");
+      }
+  });
+});
+
 
 animate();
