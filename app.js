@@ -460,5 +460,38 @@ jQuery(document).ready(function($) {
   });
 });
 
+jQuery(document).ready(function($) {
+  
+  function addItem() {
+      let newItem = $("#new-todo").val();
+      if (newItem) {
+          $("#todo-list").append("<li class='todo-item'>" + newItem + "</li>");
+          $("#new-todo").val("");
+      }
+  }
+
+  
+  function toggleComplete(item) {
+      item.toggleClass("complete");
+  }
+
+
+  $("#new-todo").keypress(function(event) {
+      if (event.which == 13) { 
+          addItem();
+          event.preventDefault();
+      }
+  });
+
+  
+  $("#todo-list").on("click", ".todo-item", function() {
+      toggleComplete($(this));
+  });
+
+ 
+  $("#todo-list").on("dblclick", ".todo-item", function() {
+      $(this).remove();
+  });
+});
 
 animate();

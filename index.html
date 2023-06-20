@@ -5,6 +5,25 @@
   <title>日時表示</title>
   <style>
 
+#todo-list {
+            list-style-type: none;
+            padding: 0;
+            width: 200px;
+        }
+
+        .todo-item {
+            background-color: #ddd;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 1.2em;
+            border-radius: 5px;
+        }
+
+        .todo-item.complete {
+            text-decoration: line-through;
+            color: #888;
+        }
+
 .accordion-section {
             width: 100%;
             display: flex;
@@ -379,6 +398,13 @@
   <div class="accordion-header">Section 3</div>
   <div class="accordion-content">Content for section 3</div>
 </div>
+
+<h1>My To-Do List</h1>
+    <input id="new-todo" type="text" placeholder="Add a new task">
+    <ul id="todo-list">
+        <li class="todo-item">Buy milk</li>
+        <li class="todo-item">Call mom</li>
+    </ul>
 
 
   </div>
