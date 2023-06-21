@@ -494,4 +494,31 @@ jQuery(document).ready(function($) {
   });
 });
 
+jQuery(document).ready(function($) {
+  var selected = null;
+  var pos = { top: 0, left: 0 };
+
+  $(".draggable").mousedown(function(e) {
+      selected = $(this);
+      pos = {
+          top: e.clientY - selected.position().top,
+          left: e.clientX - selected.position().left
+      };
+      return false; // Prevent text selection
+  });
+
+  $("#drag-container").mousemove(function(e) {
+      if (selected) {
+          selected.css({
+              top: e.clientY - pos.top,
+              left: e.clientX - pos.left
+          });
+      }
+  });
+
+  $(document).mouseup(function() {
+      selected = null;
+  });
+});
+
 animate();
