@@ -4,7 +4,23 @@
   <meta charset="UTF-8">
   <title>日時表示</title>
   <style>
-
+ 
+ .container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 300px;
+            overflow: auto;
+            height: 100vh;
+        }
+        .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .product button {
+            float: right;
+        }
 #drag-container {
             width: 600px;
             height: 400px;
@@ -426,6 +442,24 @@
       <div class="draggable" style="left: 50px;"></div>
       <div class="draggable" style="left: 100px;"></div>
   </div>
+
+  <div class="container">
+    <h1>Products</h1>
+    <div class="product" data-id="1" data-price="500">
+        <h2>Product 1</h2>
+        <p>Price: <span class="price">500</span></p>
+        <button>Add to cart</button>
+    </div>
+    <div class="product" data-id="2" data-price="300">
+        <h2>Product 2</h2>
+        <p>Price: <span class="price">300</span></p>
+        <button>Add to cart</button>
+    </div>
+
+    <h1>Shopping Cart</h1>
+    <div id="cart"></div>
+    <h2>Total: <span id="total">0</span></h2>
+</div>
 
 
   </div>

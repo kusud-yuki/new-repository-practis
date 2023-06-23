@@ -521,4 +521,41 @@ jQuery(document).ready(function($) {
   });
 });
 
+jQuery(document).ready(function($) {
+  var cart = {};
+
+  $('.product button').click(function() {
+      var product = $(this).parent();
+      var id = product.data('id');
+      var price = product.data('price');
+
+      if (cart[id]) {
+          cart[id].count++;
+      } else {
+          cart[id] = {
+              name: 'Product ' + id,
+              price: price,
+              count: 1
+          };
+      }
+
+      updateCart();
+  });
+
+  function updateCart() {
+      var cartDiv = $('#cart').empty();
+      var total = 0;
+
+      $.each(cart, function(id, product) {
+          var productDiv = $('<div>')
+              .text(product.name + ' (' + product.count + 'x) - ' + product.price * product.count)
+              .appendTo(cartDiv);
+          
+          total += product.price * product.count;
+      });
+
+      $('#total').text(total);
+  }
+});
+
 animate();
