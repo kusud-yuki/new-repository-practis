@@ -558,4 +558,38 @@ jQuery(document).ready(function($) {
   }
 });
 
+jQuery(document).ready(function($) {
+  $('#calculate').click(function() {
+    var num1 = parseFloat($('#input1').val());
+    var num2 = parseFloat($('#input2').val());
+    var operator = $('#operator').val();
+    var result;
+
+    switch (operator) {
+      case 'add':
+        result = num1 + num2;
+        break;
+      case 'subtract':
+        result = num1 - num2;
+        break;
+      case 'multiply':
+        result = num1 * num2;
+        break;
+      case 'divide':
+        if (num2 !== 0) {
+          result = num1 / num2;
+        } else {
+          alert("Cannot divide by zero");
+          return;
+        }
+        break;
+      default:
+        alert("Invalid operation");
+        return;
+    }
+
+    $('#result').text(result);
+  });
+});
+
 animate();
