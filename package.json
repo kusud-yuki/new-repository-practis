@@ -15,7 +15,13 @@
   "bugs": {
     "url": "https://github.com/kusud-yuki/themed-work/issues"
   },
-  "homepage": "https://github.com/kusud-yuki/themed-work#readme"
+  "homepage": "https://github.com/kusud-yuki/themed-work#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1",
+    "node": "^20.3.1"
+  }
   
 }
 

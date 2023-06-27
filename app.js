@@ -1,3 +1,4 @@
+
 // canvas要素の取得
 const canvas = document.getElementById('canvas');
 const mouse = {
@@ -75,12 +76,21 @@ const correctPassword = "password";
 const scrollImageDiv = document.getElementById('scroll-image');
 const tabButtons = document.querySelectorAll(".tab-button");
 const tabContents = document.querySelectorAll(".tab-content");
+const express = require('express');
+const bcrypt = require('bcrypt');
+const sql = require('mssql');
+
+const app = express();
+app.use(express.json());
 
 
 
 let images = scrollImageDiv.getElementsByTagName('img');
 let currentIndex = 0;
 let captions = ["Caption for image 1", "Caption for image 2", "Caption for image 3"];
+
+
+
 
 
 tabButtons.forEach((button) => {
@@ -100,17 +110,6 @@ tabButtons.forEach((button) => {
 });
 
 
-function login() {
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
-
-  if (username === correctUsername && password === correctPassword) {
-    document.getElementById('login-form').style.display = 'none';
-    document.getElementById('main-content').style.display = 'block';
-  } else {
-    document.getElementById('error-message').textContent = "Incorrect username or password.";
-  }
-}
 
 
 
@@ -593,3 +592,39 @@ jQuery(document).ready(function($) {
 });
 
 animate();
+const config = {
+  user: 'u.b_bfg@icloud.com@themed-work-server',
+  password: 'jkl0apABS',
+  server: 'themed-work-server.database.windows.net',
+  database: 'themed-work-datebase',
+  post:1433
+};
+
+app.post('/login', async (req, res) => {
+  try {
+    let pool = await sql.connect(config);
+    let result = await pool.request()
+      .input('input_parameter', sql.NVarChar, req.body.username)
+      .query('SELECT * from Users WHERE username = @input_parameter');
+      
+    if (result.recordset.length > 0) {
+      const user = result.recordset[0];
+      const isPasswordCorrect = await bcrypt.compare(req.body.password, user.password);
+
+      if (isPasswordCorrect) {
+        res.json({ success: true });
+      } else {
+        res.json({ success: false });
+      }
+    } else {
+      res.json({ success: false });
+    }
+
+    await pool.close();
+  } catch (err) {
+    res.status(500);
+    res.send(err.message);
+  }
+});
+
+app.listen(3000, () => console.log('Server is running on port 3000...'));

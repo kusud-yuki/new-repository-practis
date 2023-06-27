@@ -257,14 +257,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
- <!--  <div id="login-form" style="display: block;">
+   <div id="login-form" style="display: block;">
     <h1>Login</h1>
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
     <button onclick="login()">Login</button>
     <p id="error-message" style="color: red;"></p>
   </div>
-  <div id="main-content" style="display: none;"> -->
+  <div id="main-content" style="display: none;">
 
 <div id="home" class="tab-content active">
   <div id="tabs">
@@ -535,6 +535,31 @@
     });
 
     displayDateTime();
+    
+    async function login() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    const response = await fetch('/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username,
+        password
+      })
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      document.getElementById('login-form').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+    } else {
+      document.getElementById('error-message').textContent = "Incorrect username or password.";
+    }
+  }
   </script>
  
 
